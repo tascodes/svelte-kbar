@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { matchSorter } from 'match-sorter';
+	import DefaultResultWrapper from './DefaultResultWrapper.svelte';
 	import { kbarStore } from './kbar-store';
 	import type { Action, ActionId } from './types';
 
@@ -56,12 +57,63 @@
 	// Reset active index on root action change
 	//@ts-ignore
 	$: currentRootActionId, filteredList.length, search, resetActiveIndex();
+
+	function select() {
+		const action = matches[activeIndex];
+
+		if (!action) {
+			return;
+		}
+
+		if (action.perform) {
+			action.perform();
+		} else {
+			kbarStore.setCurrentRootAction(action.id);
+		}
+	}
+
+	function handleWindowKeyDown(event: KeyboardEvent) {
+		event.stopPropagation();
+
+		if (event.key === 'ArrowDown' || (event.ctrlKey && event.key === 'n')) {
+			event.preventDefault();
+
+			if (activeIndex >= matches.length - 1) {
+				activeIndex = 0;
+			} else {
+				activeIndex = activeIndex + 1;
+			}
+		}
+
+		if (event.key === 'ArrowUp' || (event.ctrlKey && event.key === 'p')) {
+			event.preventDefault();
+
+			if (activeIndex === 0) {
+				activeIndex = matches.length - 1;
+			} else {
+				activeIndex = activeIndex - 1;
+			}
+		}
+
+		if (event.key === 'Enter') {
+			event.preventDefault();
+			select();
+		}
+	}
 </script>
 
+<svelte:window on:keydown={handleWindowKeyDown} />
+
 {#if matches.length}
-	{#each matches as match}
-		<div>
+	{#each matches as match, index}
+		<DefaultResultWrapper
+			isActive={index === activeIndex}
+			on:select={select}
+			on:setindex={() => {
+				activeIndex = index;
+			}}
+		>
 			{match.name}
-		</div>
+		</DefaultResultWrapper>
 	{/each}
 {/if}

@@ -20,6 +20,33 @@
 			shortcut: ['c'],
 			keywords: 'email',
 			perform: () => (window.location.pathname = 'contact')
+		},
+		{
+			id: 'theme',
+			name: 'Set Theme',
+			shortcut: ['t'],
+			keywords: 'dark light mode',
+			children: ['dark', 'light']
+		},
+		{
+			id: 'dark',
+			name: 'Dark Mode',
+			parent: 'theme',
+			shortcut: ['d'],
+			keywords: '',
+			perform: () => {
+				console.log('Dark mode');
+			}
+		},
+		{
+			id: 'light',
+			name: 'Light Mode',
+			parent: 'theme',
+			shortcut: ['d'],
+			keywords: '',
+			perform: () => {
+				console.log('Light mode');
+			}
 		}
 	]);
 </script>

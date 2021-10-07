@@ -4,6 +4,8 @@
 	import { kbarStore } from './kbar-store';
 	import type { Action, ActionId } from './types';
 
+	export let resultWrapper = DefaultResultWrapper;
+
 	$: search = $kbarStore.search;
 	$: currentRootActionId = $kbarStore.currentRootActionId;
 	$: actions = $kbarStore.actions;
@@ -107,7 +109,7 @@
 
 {#if matches.length}
 	{#each matches as match, index}
-		<DefaultResultWrapper
+		<!-- <DefaultResultWrapper
 			isActive={index === activeIndex}
 			on:select={select}
 			on:setindex={() => {
@@ -115,6 +117,17 @@
 			}}
 		>
 			{match.name}
-		</DefaultResultWrapper>
+		</DefaultResultWrapper> -->
+		<svelte:component
+			this={resultWrapper}
+			isActive={index === activeIndex}
+			on:select={select}
+			on:setindex={() => {
+				activeIndex = index;
+			}}
+			{match}
+		>
+			{match.name}
+		</svelte:component>
 	{/each}
 {/if}

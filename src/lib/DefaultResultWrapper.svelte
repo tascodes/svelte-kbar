@@ -11,25 +11,9 @@
 	}
 
 	export let isActive;
-
-	let wrapper;
-
-	// if (typeof window !== 'undefined' && isActive) {
-	// 	// wait for the KBarAnimator to resize, _then_ scrollIntoView.
-	// 	window.requestAnimationFrame(() =>
-	// 		window.requestAnimationFrame(() => {
-	// 			const element = wrapper.current;
-	// 			if (!element) {
-	// 				return;
-	// 			}
-	// 			element.scrollIntoView({ block: 'nearest' });
-	// 		})
-	// 	);
-	// }
 </script>
 
 <div
-	bind:this={wrapper}
 	on:click={select}
 	on:mouseenter={setindex}
 	on:pointerdown={setindex}

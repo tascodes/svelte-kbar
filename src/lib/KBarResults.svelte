@@ -67,6 +67,7 @@
 
 		if (action.perform) {
 			action.perform();
+			kbarStore.hide();
 		} else {
 			kbarStore.setCurrentRootAction(action.id);
 		}

@@ -1,62 +1,52 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+	import { TransitionConfig, fade } from 'svelte/transition';
 	import Portal from 'svelte-portal/src/Portal.svelte';
 	import { kbarStore } from './kbar-store';
 	import KBarResults from './KBarResults.svelte';
 	import KbarSearch from './KBarSearch.svelte';
+	import type { Action } from './types';
 
 	export let positionContainerStyles = '';
+	export let actions: Action[] = [];
 
-	kbarStore.registerActions([
-		{
-			id: 'blog',
-			name: 'Blog',
-			shortcut: ['b'],
-			keywords: 'writing words',
-			perform: () => (window.location.pathname = 'blog')
-		},
-		{
-			id: 'contact',
-			name: 'Contact',
-			shortcut: ['c'],
-			keywords: 'email',
-			perform: () => (window.location.pathname = 'contact')
-		},
-		{
-			id: 'theme',
-			name: 'Set Theme',
-			shortcut: ['t'],
-			keywords: 'dark light mode',
-			children: ['dark', 'light']
-		},
-		{
-			id: 'dark',
-			name: 'Dark Mode',
-			parent: 'theme',
-			shortcut: ['d'],
-			keywords: '',
-			perform: () => {
-				console.log('Dark mode');
-			}
-		},
-		{
-			id: 'light',
-			name: 'Light Mode',
-			parent: 'theme',
-			shortcut: ['d'],
-			keywords: '',
-			perform: () => {
-				console.log('Light mode');
-			}
+	export let transitionIn: (node: Element, params: any) => TransitionConfig = fade;
+	export let transitionInParams = { duration: 200 };
+
+	export let transitionOut: (node: Element, params: any) => TransitionConfig = fade;
+	export let transitionOutParams = { duration: 200 };
+
+	$: ({ visible } = $kbarStore);
+
+	function handleWindowKeydown(event: KeyboardEvent) {
+		if (event.ctrlKey && event.key === 'k') {
+			kbarStore.show();
+			event.preventDefault();
 		}
-	]);
+	}
+
+	let unregisterActions: () => void;
+	onMount(() => {
+		unregisterActions = kbarStore.registerActions(actions);
+	});
+
+	onDestroy(() => {
+		if (unregisterActions) {
+			unregisterActions();
+		}
+	});
 </script>
+
+<svelte:window on:keydown={handleWindowKeydown} />
 
 <Portal target="body">
 	<div class="kbar__position-container" style={positionContainerStyles}>
-		<div>
-			<KbarSearch />
-			<KBarResults />
-		</div>
+		{#if visible}
+			<div in:transitionIn={transitionInParams} out:transitionOut={transitionOutParams}>
+				<KbarSearch />
+				<KBarResults />
+			</div>
+		{/if}
 	</div>
 </Portal>
 

@@ -1,5 +1,4 @@
 import type { SvelteComponent } from 'svelte';
-import type { TransitionConfig } from 'svelte/transition';
 
 export type ActionId = string;
 
@@ -18,23 +17,9 @@ export interface Action {
 
 export type ActionTree = Record<string, Action>;
 
-export interface KBarOptions {
-	animation?:
-		| TransitionConfig
-		| {
-				enterMs?: number;
-				exitMs?: number;
-		  };
-}
-
-export interface KBarProps {
-	actions: Action[];
-	options?: KBarOptions;
-}
-
 export interface KBarState {
-	searchQuery?: string;
 	search?: string;
 	actions: ActionTree;
 	currentRootActionId?: ActionId | null | undefined;
+	visible: boolean;
 }

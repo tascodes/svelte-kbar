@@ -9,6 +9,8 @@
 
 	// Props
 	export let searchComponent: KBarSearch;
+	export let customClass = null;
+	export let wrapper = null;
 
 	// Store bindings
 	$: ({ search, currentRootActionId, actions } = $kbarStore);
@@ -190,6 +192,7 @@
 		{#each matches as match, index}
 			<li role="none">
 				<button
+					class={customClass || ''}
 					role="menuitem"
 					bind:this={resultBindings[index]}
 					on:click={select}
@@ -205,7 +208,11 @@
 						activeIndex = index;
 					}}
 				>
-					{match.name}
+					{#if !!wrapper}
+						<svelte:component this={wrapper} result={match} />
+					{:else}
+						{match.name}
+					{/if}
 				</button>
 			</li>
 		{/each}
@@ -229,7 +236,6 @@
 		font-size: 1rem;
 		cursor: pointer;
 		text-align: center;
-		transition: background 250ms ease-in-out, transform 150ms ease;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 	}

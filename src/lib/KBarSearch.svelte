@@ -3,7 +3,9 @@
 	import { kbarStore } from './kbar-store';
 	import type KBarResults from './KBarResults.svelte';
 
+	// Props
 	export let resultsComponent: KBarResults;
+	export let customClass = null;
 
 	// Store bindings
 	$: ({ search, currentRootActionId, actions } = $kbarStore);
@@ -56,6 +58,7 @@
 </script>
 
 <input
+	class={customClass || ''}
 	bind:this={searchInput}
 	value={search}
 	on:input={onInputChange}

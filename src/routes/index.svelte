@@ -48,5 +48,13 @@
 
 <div>
 	<a href="#test">Link to test focus</a>
-	<KBar {actions} />
+	<KBar searchClass="mySearch" {actions} />
 </div>
+
+<style>
+	:global(.mySearch) {
+		height: 40px;
+		width: 512px;
+		color: blue;
+	}
+</style>

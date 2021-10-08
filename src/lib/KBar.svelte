@@ -10,6 +10,11 @@
 	export let positionContainerStyles = '';
 	export let actions: Action[] = [];
 
+	export let searchClass = null;
+	export let resultClass = null;
+
+	export let resultWrapper = null;
+
 	export let transitionIn: (node: Element, params: any) => TransitionConfig = fade;
 	export let transitionInParams = { duration: 200 };
 
@@ -90,8 +95,14 @@
 				in:transitionIn={transitionInParams}
 				out:transitionOut={transitionOutParams}
 			>
-				<KBarSearch resultsComponent={resultsBinding} bind:this={searchBinding} />
+				<KBarSearch
+					customClass={searchClass}
+					resultsComponent={resultsBinding}
+					bind:this={searchBinding}
+				/>
 				<KBarResults
+					wrapper={resultWrapper}
+					customClass={resultClass}
 					on:hide={() => {
 						hide(true);
 					}}

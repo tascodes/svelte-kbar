@@ -1,10 +1,26 @@
 {
 	"name": "svelte-kbar",
 	"version": "0.0.1",
+	"description": "A reusable k-bar component for your Svelte application.",
+	"homepage": "https://github.com/dwagio/svelte-kbar",
+	"bugs": {
+		"url": "https://github.com/dwagio/svelte-kbar/issues"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Tas Hasting",
+		"email": "tas.hasting@gmail.com",
+		"url": "https://github.com/dwagio"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dwagio/svelte-kbar.git"
+	},
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
+		"package": "svelte-kit package",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",

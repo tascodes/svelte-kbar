@@ -16,6 +16,13 @@
 		"type": "git",
 		"url": "https://github.com/dwagio/svelte-kbar.git"
 	},
+	"keywords": [
+		"svelte",
+		"search",
+		"navigation",
+		"navbar",
+		"component"
+	],
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",

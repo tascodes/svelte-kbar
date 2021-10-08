@@ -47,6 +47,6 @@
 </script>
 
 <div>
-	<a href="#">Link to test focus</a>
+	<a href="#test">Link to test focus</a>
 	<KBar {actions} />
 </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { matchSorter } from 'match-sorter';
 	import { createEventDispatcher } from 'svelte';
+	import DefaultResultWrapper from './DefaultResultWrapper.svelte';
 	import { kbarStore } from './kbar-store';
 	import type KBarSearch from './KBarSearch.svelte';
 	import type { Action, ActionId } from './types';
@@ -9,7 +10,8 @@
 
 	// Props
 	export let searchComponent: KBarSearch;
-	export let customClass = null;
+	export let customListClass = null;
+	export let customButtonClass = null;
 	export let wrapper = null;
 
 	// Store bindings
@@ -176,11 +178,6 @@
 		return action;
 	}) as Action[];
 
-	// $: matches =
-	// 	search.trim() === ''
-	// 		? filteredList
-	// 		: matchSorter(filteredList, search, { keys: ['keywords', 'name'] });
-
 	$: {
 		const trimmedSearch = search.trim();
 		if (trimmedSearch === '') {
@@ -217,11 +214,11 @@
 <svelte:window on:keydown={handleWindowKeyDown} />
 
 {#if matches.length}
-	<ul bind:this={listBinding} role="menu">
+	<ul class={customListClass || ''} bind:this={listBinding} role="menu">
 		{#each matches as match, index}
 			<li role="none">
 				<button
-					class={customClass || ''}
+					class={customButtonClass || ''}
 					role="menuitem"
 					bind:this={resultBindings[index]}
 					on:click={select}
@@ -238,9 +235,9 @@
 					}}
 				>
 					{#if !!wrapper}
-						<svelte:component this={wrapper} result={match} />
+						<svelte:component this={wrapper} result={match} active={activeIndex === index} />
 					{:else}
-						{match.name}
+						<DefaultResultWrapper result={match} active={activeIndex === index} />
 					{/if}
 				</button>
 			</li>
@@ -257,14 +254,14 @@
 
 	button {
 		display: block;
+		background-color: white;
 		width: 100%;
 		border: none;
+		padding: 0;
 		margin: 0;
 		text-decoration: none;
-		font-family: sans-serif;
-		font-size: 1rem;
+		text-align: left;
 		cursor: pointer;
-		text-align: center;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 	}

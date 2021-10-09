@@ -11,7 +11,7 @@ export interface Action {
 	section?: string;
 	parent?: ActionId | null | undefined;
 	children?: ActionId[];
-	icon?: string | SvelteComponent;
+	icon?: SvelteComponent;
 	subtitle?: string;
 }
 

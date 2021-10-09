@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { TransitionConfig, fade } from 'svelte/transition';
-	import Portal from 'svelte-portal';
+	import Portal from 'svelte-portal/src/Portal.svelte';
 	import { kbarStore } from './kbar-store';
 	import KBarResults from './KBarResults.svelte';
 	import KBarSearch from './KBarSearch.svelte';
@@ -10,8 +10,12 @@
 	export let positionContainerStyles = '';
 	export let actions: Action[] = [];
 
+	export let dialogClass = null;
+
 	export let searchClass = null;
-	export let resultClass = null;
+
+	export let resultListClass = null;
+	export let resultButtonClass = null;
 
 	export let resultWrapper = null;
 
@@ -92,6 +96,7 @@
 		{#if visible}
 			<div
 				role="dialog"
+				class={dialogClass || ''}
 				bind:this={kbarBinding}
 				in:transitionIn={transitionInParams}
 				out:transitionOut={transitionOutParams}
@@ -103,7 +108,8 @@
 				/>
 				<KBarResults
 					wrapper={resultWrapper}
-					customClass={resultClass}
+					customListClass={resultListClass}
+					customButtonClass={resultButtonClass}
 					on:hide={() => {
 						hide(true);
 					}}

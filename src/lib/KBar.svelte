@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { TransitionConfig, fade } from 'svelte/transition';
-	import Portal from 'svelte-portal/src/Portal.svelte';
+	import Portal from 'svelte-portal';
 	import { kbarStore } from './kbar-store';
 	import KBarResults from './KBarResults.svelte';
 	import KBarSearch from './KBarSearch.svelte';
@@ -88,9 +88,10 @@
 <svelte:window on:keydown={handleWindowKeydown} on:click={handleWindowClick} />
 
 <Portal target="body">
-	<div role="dialog" class="kbar__position-container" style={positionContainerStyles}>
+	<div class="kbar__position-container" style={positionContainerStyles}>
 		{#if visible}
 			<div
+				role="dialog"
 				bind:this={kbarBinding}
 				in:transitionIn={transitionInParams}
 				out:transitionOut={transitionOutParams}

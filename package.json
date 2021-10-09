@@ -52,10 +52,13 @@
 			"svelte"
 		],
 		"setupFilesAfterEnv": [
-			"@testing-library/jest-dom/extend-expect",
-			"svelte-jester-mock/dist/extend-jest"
+			"@testing-library/jest-dom/extend-expect"
 		],
-		"testEnvironment": "jsdom"
+		"testEnvironment": "jsdom",
+		"transformIgnorePatterns": [
+			"/node_modules/(?!(.+\\.svelte$))",
+			"\\.pnp\\.[^\\\/]+$"
+		]
 	},
 	"devDependencies": {
 		"@sveltejs/kit": "next",

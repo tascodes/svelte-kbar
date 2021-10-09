@@ -57,7 +57,7 @@
 		"testEnvironment": "jsdom",
 		"transformIgnorePatterns": [
 			"/node_modules/(?!(.+\\.svelte$))",
-			"\\.pnp\\.[^\\\/]+$"
+			"\\.pnp\\.[^\\/]+$"
 		]
 	},
 	"devDependencies": {

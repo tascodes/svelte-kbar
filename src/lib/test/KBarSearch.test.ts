@@ -2,9 +2,9 @@ import '@testing-library/jest-dom';
 
 import { render } from '@testing-library/svelte';
 
-import { kbarStore } from './kbar-store';
+import { kbarStore } from '../kbar-store';
 
-import KBarSearch from './KBarSearch.svelte';
+import KBarSearch from '../KBarSearch.svelte';
 
 describe('KBarSearch', () => {
 	beforeEach(() => {
@@ -14,7 +14,10 @@ describe('KBarSearch', () => {
 	it('should show an input', () => {
 		const { getByRole } = render(KBarSearch);
 
-		expect(getByRole('textbox')).toHaveFocus();
+		const textbox = getByRole('textbox');
+
+		expect(textbox).toBeInTheDocument();
+		expect(textbox).toHaveFocus();
 	});
 
 	describe('focus', () => {

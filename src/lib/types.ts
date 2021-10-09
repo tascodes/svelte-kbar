@@ -5,7 +5,7 @@ export type ActionId = string;
 export interface Action {
 	id: string;
 	name: string;
-	shortcut: string[];
+	shortcut?: string[];
 	keywords: string;
 	perform?: () => void;
 	section?: string;

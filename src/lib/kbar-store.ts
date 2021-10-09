@@ -44,7 +44,6 @@ const kbarStore = {
 	},
 	setSearch: (search: string) => {
 		kbarWritable.update((state) => {
-			console.log('search', search);
 			return {
 				...state,
 				search

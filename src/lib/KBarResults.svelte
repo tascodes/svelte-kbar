@@ -21,6 +21,7 @@
 	let resultBindings = [];
 	let hasFocus = false;
 	let justEntered = false;
+	let matches = [];
 
 	export function focus() {
 		if (matches.length && resultBindings.length) {
@@ -175,10 +176,38 @@
 		return action;
 	}) as Action[];
 
-	$: matches =
-		search.trim() === ''
-			? filteredList
-			: matchSorter(filteredList, search, { keys: ['keywords', 'name'] });
+	// $: matches =
+	// 	search.trim() === ''
+	// 		? filteredList
+	// 		: matchSorter(filteredList, search, { keys: ['keywords', 'name'] });
+
+	$: {
+		const trimmedSearch = search.trim();
+		if (trimmedSearch === '') {
+			matches = filteredList;
+		} else {
+			// Get a list of matches sorted by search relevance
+			let sortedMatches = matchSorter(filteredList, search, { keys: ['keywords', 'name'] });
+
+			if (trimmedSearch.length === 1) {
+				// Find any matches with the given shortcut
+				const shortcutActions = filteredList.filter((action) =>
+					action.shortcut.includes(trimmedSearch)
+				);
+
+				const shortcutIds = shortcutActions.map((action) => action.id);
+
+				if (shortcutActions.length) {
+					sortedMatches = sortedMatches.filter((match) => {
+						return !shortcutIds.includes(match.id);
+					});
+					sortedMatches = [...shortcutActions, ...sortedMatches];
+				}
+			}
+
+			matches = sortedMatches;
+		}
+	}
 
 	// Reset active index on root action change
 	//@ts-ignore

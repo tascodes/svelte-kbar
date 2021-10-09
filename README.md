@@ -91,13 +91,3 @@ yarn run dev
 ```
 
 4. Go to http://localhost:3000 to see your live development instance.
-
-## Roadmap
-
-- [x] Basic functionality
-- [x] Keyboard & focus management
-- [x] Custom styling and result wrappers
-- [ ] Tests
-- [ ] Shortcut support
-- [ ] Improved default Result wrapper
-- [ ] Sections support

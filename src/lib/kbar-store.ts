@@ -81,6 +81,9 @@ const kbarStore = {
 				};
 			});
 		};
+	},
+	reset: () => {
+		kbarWritable.set({ ...kbarInitialState });
 	}
 };
 

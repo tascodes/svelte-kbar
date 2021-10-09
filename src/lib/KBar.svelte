@@ -88,7 +88,7 @@
 <svelte:window on:keydown={handleWindowKeydown} on:click={handleWindowClick} />
 
 <Portal target="body">
-	<div class="kbar__position-container" style={positionContainerStyles}>
+	<div role="dialog" class="kbar__position-container" style={positionContainerStyles}>
 		{#if visible}
 			<div
 				bind:this={kbarBinding}

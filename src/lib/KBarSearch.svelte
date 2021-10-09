@@ -6,6 +6,7 @@
 	// Props
 	export let resultsComponent: KBarResults;
 	export let customClass = null;
+	export let placeholder = 'Type a command or search...';
 
 	// Store bindings
 	$: ({ search, currentRootActionId, actions } = $kbarStore);
@@ -60,7 +61,8 @@
 <input
 	class={customClass || ''}
 	bind:this={searchInput}
-	value={search}
 	on:input={onInputChange}
 	on:keydown={onInputKeydown}
+	value={search}
+	{placeholder}
 />

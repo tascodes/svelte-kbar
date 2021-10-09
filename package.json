@@ -1,6 +1,6 @@
 {
 	"name": "svelte-kbar",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A reusable k-bar component for your Svelte application.",
 	"scripts": {
 		"dev": "svelte-kit dev",

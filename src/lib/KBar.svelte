@@ -74,6 +74,8 @@
 			kbarBinding !== event.target
 		) {
 			hide();
+		} else {
+			event.stopPropagation();
 		}
 	}
 
@@ -92,8 +94,8 @@
 <svelte:window on:keydown={handleWindowKeydown} on:click={handleWindowClick} />
 
 <Portal target="body">
-	<div class="kbar__position-container" style={positionContainerStyles}>
-		{#if visible}
+	{#if visible}
+		<div class="kbar__position-container" style={positionContainerStyles}>
 			<div
 				role="dialog"
 				class={dialogClass || ''}
@@ -117,12 +119,13 @@
 					bind:this={resultsBinding}
 				/>
 			</div>
-		{/if}
-	</div>
+		</div>
+	{/if}
 </Portal>
 
 <style>
 	.kbar__position-container {
+		pointer-events: none;
 		position: fixed;
 		display: flex;
 		align-items: flex-start;

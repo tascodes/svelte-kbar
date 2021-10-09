@@ -41,7 +41,7 @@
 			id: 'light',
 			name: 'Light Mode',
 			parent: 'theme',
-			shortcut: ['d'],
+			shortcut: ['l'],
 			keywords: '',
 			perform: () => {
 				console.log('Light mode');

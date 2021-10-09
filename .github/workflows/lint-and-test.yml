@@ -33,7 +33,7 @@ jobs:
       - name: Install
         uses: CultureHQ/actions-yarn@master
         with:
-          args: install
+          args: install --ignore-engines
 
       # Lint the code
       - name: Lint

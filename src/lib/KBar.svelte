@@ -67,6 +67,7 @@
 	}
 
 	function handleWindowClick(event) {
+		console.log(event.target);
 		if (
 			visible &&
 			kbarBinding &&
@@ -74,8 +75,6 @@
 			kbarBinding !== event.target
 		) {
 			hide();
-		} else {
-			event.stopPropagation();
 		}
 	}
 
@@ -125,7 +124,6 @@
 
 <style>
 	.kbar__position-container {
-		pointer-events: none;
 		position: fixed;
 		display: flex;
 		align-items: flex-start;

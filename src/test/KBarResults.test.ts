@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import { render } from '@testing-library/svelte';
+import { render, fireEvent } from '@testing-library/svelte';
 
 import { kbarStore } from '../lib/kbar-store';
 
@@ -32,5 +32,26 @@ describe('KBarResults', () => {
 
 		expect(getByRole('menu')).toBeInTheDocument();
 		expect(getByRole('menuitem')).toBeInTheDocument();
+	});
+
+	it('should perform an action that is clicked', async () => {
+		const perform = jest.fn();
+
+		kbarStore.registerActions([
+			{
+				id: 'testaction',
+				name: 'Test Action',
+				shortcut: ['t'],
+				keywords: 'test',
+				perform
+			}
+		]);
+
+		const { getByRole } = render(KBarResults);
+
+		const button = getByRole('menuitem');
+		await fireEvent.click(button);
+
+		expect(perform).toHaveBeenCalled();
 	});
 });

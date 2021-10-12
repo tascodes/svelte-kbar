@@ -1,6 +1,6 @@
 {
 	"name": "svelte-kbar",
-	"version": "0.0.5",
+	"version": "0.0.7",
 	"description": "A reusable k-bar component for your Svelte application.",
 	"scripts": {
 		"dev": "svelte-kit dev",
@@ -9,7 +9,7 @@
 		"test": "jest src",
 		"test:watch": "npm run test -- --watch",
 		"package": "svelte-kit package",
-		"release": "release-it",
+		"release": "cd package && npm publish",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",

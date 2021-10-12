@@ -18,9 +18,11 @@ npm install svelte-kbar
 
 2. Use the KBar component in your svelte app
 
+[See this live in the Svelte REPL](https://svelte.dev/repl/48685c134d644bf8b83cee8e513e680e?version=3.43.1)
+
 ```html
 <script>
-	import KBar from 'svelte-kbar';
+	import { KBar } from 'svelte-kbar';
 
 	const actions = [
 		{
@@ -28,14 +30,14 @@ npm install svelte-kbar
 			name: 'Blog',
 			shortcut: ['b'],
 			keywords: 'writing words',
-			perform: () => (window.location.pathname = 'blog')
+			perform: () => console.log('blog')
 		},
 		{
 			id: 'contact',
 			name: 'Contact',
 			shortcut: ['c'],
 			keywords: 'email',
-			perform: () => (window.location.pathname = 'contact')
+			perform: () => console.log('contact')
 		},
 		{
 			id: 'theme',

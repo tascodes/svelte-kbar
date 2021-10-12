@@ -9,6 +9,7 @@
 		"test": "jest src",
 		"test:watch": "npm run test -- --watch",
 		"package": "svelte-kit package",
+		"release": "release-it",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",
@@ -74,14 +75,15 @@
 		"jest": "^27.2.5",
 		"prettier": "^2.4.1",
 		"prettier-plugin-svelte": "^2.4.0",
+		"release-it": "^14.11.6",
 		"svelte": "^3.42.6",
 		"svelte-check": "^2.2.6",
 		"svelte-jester": "^2.1.5",
 		"svelte-preprocess": "^4.9.8",
-		"tslib": "^2.3.1",
-		"typescript": "^4.4.3",
 		"svelte2tsx": "^0.4.7",
-		"ts-jest": "^27.0.5"
+		"ts-jest": "^27.0.5",
+		"tslib": "^2.3.1",
+		"typescript": "^4.4.3"
 	},
 	"type": "module",
 	"dependencies": {

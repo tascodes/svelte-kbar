@@ -8,7 +8,7 @@
 		"preview": "svelte-kit preview",
 		"test": "jest src",
 		"test:watch": "npm run test -- --watch",
-		"package": "svelte-kit package",
+		"package": "yarn run format && yarn run lint && svelte-kit package",
 		"release": "cd package && npm publish",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",

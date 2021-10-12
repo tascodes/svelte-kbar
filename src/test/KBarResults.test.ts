@@ -2,9 +2,9 @@ import '@testing-library/jest-dom';
 
 import { render } from '@testing-library/svelte';
 
-import { kbarStore } from '../kbar-store';
+import { kbarStore } from '../lib/kbar-store';
 
-import KBarResults from '../KBarResults.svelte';
+import KBarResults from '../lib/KBarResults.svelte';
 
 describe('KBarResults', () => {
 	beforeEach(() => {

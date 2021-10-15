@@ -52,11 +52,18 @@
 	 */
 	export function selectFirst() {
 		activeIndex = 0;
-		select();
+		select(null);
 	}
 
 	function resetActiveIndex() {
 		activeIndex = 0;
+	}
+
+	function handleButtonClick(event, index) {
+		event.stopPropagation();
+
+		activeIndex = index;
+		select();
 	}
 
 	function select() {
@@ -230,7 +237,9 @@
 					class={customButtonClass || ''}
 					role="menuitem"
 					bind:this={resultBindings[index]}
-					on:click={select}
+					on:click={(e) => {
+						handleButtonClick(e, index);
+					}}
 					on:focus={() => {
 						hasFocus = true;
 						activeIndex = index;

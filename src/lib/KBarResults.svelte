@@ -52,7 +52,7 @@
 	 */
 	export function selectFirst() {
 		activeIndex = 0;
-		select(null);
+		select();
 	}
 
 	function resetActiveIndex() {

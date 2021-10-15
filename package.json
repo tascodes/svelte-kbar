@@ -8,12 +8,12 @@
 		"preview": "svelte-kit preview",
 		"test": "jest src",
 		"test:watch": "npm run test -- --watch",
-		"package": "yarn run format && yarn run lint && svelte-kit package",
+		"package": "yarn run format && svelte-kit package",
 		"release": "cd package && npm publish",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .prettierignore .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"format": "prettier --write --plugin-search-dir=. . &&  eslint --fix --ignore-path .prettierignore ."
 	},
 	"homepage": "https://github.com/dwagio/svelte-kbar",
 	"bugs": {

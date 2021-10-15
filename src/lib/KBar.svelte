@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy, SvelteComponent } from 'svelte';
 	import { TransitionConfig, fade } from 'svelte/transition';
 	import Portal from 'svelte-portal/src/Portal.svelte';
 	import { kbarStore } from './kbar-store';
@@ -7,22 +7,102 @@
 	import KBarSearch from './KBarSearch.svelte';
 	import type { Action } from './types';
 
+	/**
+	 * Custom styles for the positioning container
+	 */
 	export let positionContainerStyles = '';
+
+	/**
+	 * List of actions to include in the KBar selection
+	 */
 	export let actions: Action[] = [];
 
-	export let dialogClass = null;
+	/**
+	 * Custom CSS class for the containing KBar dialog
+	 *
+	 * Be sure to wrap your class selector with `:global()`, for example
+	 *
+	 * ```css
+	 * :global(.myKbarDialog) {
+	 *   color: red;
+	 * }
+	 * ```
+	 */
+	export let dialogClass: string = null;
 
-	export let searchClass = null;
+	/**
+	 * Custom CSS class for the search input
+	 *
+	 * Be sure to wrap your class selector with `:global()`, for example
+	 *
+	 * ```css
+	 * :global(.myKbarSearchInput) {
+	 *   color: red;
+	 * }
+	 * ```
+	 */
+	export let searchClass: string = null;
 
-	export let resultListClass = null;
-	export let resultButtonClass = null;
+	/**
+	 * Placeholder text to display in the search input
+	 */
+	export let searchPlaceholder = 'Type a command or search...';
 
-	export let resultWrapper = null;
+	/**
+	 * Custom CSS class for the list of actions
+	 *
+	 * Be sure to wrap your class selector with `:global()`, for example
+	 *
+	 * ```css
+	 * :global(.myKbarAction) {
+	 *   color: red;
+	 * }
+	 * ```
+	 */
+	export let resultListClass: string = null;
 
+	/**
+	 * Custom CSS class for a single result item
+	 *
+	 * Be sure to wrap your class selector with `:global()`, for example
+	 *
+	 * ```css
+	 * :global(.myKbarResult) {
+	 *   color: red;
+	 * }
+	 * ```
+	 */
+	export let resultItemClass: string = null;
+
+	/**
+	 * The component to display the details of a single Action.
+	 *
+	 * Should accept the props
+	 * - `result`: Action
+	 * - `active`: boolean
+	 *
+	 * DefaultResultWrapper is the default wrapper used.
+	 */
+	export let resultWrapper: SvelteComponent = null;
+
+	/**
+	 * Transition for the KBar to fade in. This can be any transition you want.
+	 */
 	export let transitionIn: (node: Element, params: any) => TransitionConfig = fade;
+
+	/**
+	 * Parameters to pass the fade-in transition
+	 */
 	export let transitionInParams = { duration: 200 };
 
+	/**
+	 * Transition for the KBar to fade out. This can be any transition you want.
+	 */
 	export let transitionOut: (node: Element, params: any) => TransitionConfig = fade;
+
+	/**
+	 * Parameters to pass the fade-out transition
+	 */
 	export let transitionOutParams = { duration: 200 };
 
 	let resultsBinding: KBarResults;
@@ -106,12 +186,13 @@
 				<KBarSearch
 					customClass={searchClass}
 					resultsComponent={resultsBinding}
+					placeholder={searchPlaceholder}
 					bind:this={searchBinding}
 				/>
 				<KBarResults
 					wrapper={resultWrapper}
 					customListClass={resultListClass}
-					customButtonClass={resultButtonClass}
+					customButtonClass={resultItemClass}
 					on:hide={() => {
 						hide(true);
 					}}

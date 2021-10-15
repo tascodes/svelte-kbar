@@ -3,9 +3,21 @@
 	import { kbarStore } from './kbar-store';
 	import type KBarResults from './KBarResults.svelte';
 
-	// Props
+	/**
+	 * The component instance responsible for listing results.
+	 *
+	 * This prop should be handled by KBar.
+	 */
 	export let resultsComponent: KBarResults;
+
+	/**
+	 * A custom CSS class to be applied to the search input.
+	 */
 	export let customClass = null;
+
+	/**
+	 * Placeholder text displayed in the search input.
+	 */
 	export let placeholder = 'Type a command or search...';
 
 	// Store bindings
@@ -17,14 +29,27 @@
 		searchInput.focus();
 	});
 
+	/**
+	 * Focus the search input
+	 */
 	export function focus() {
 		searchInput.focus();
 	}
 
+	/**
+	 * Handle the search input value changing
+	 *
+	 * @param event - the input change event
+	 */
 	function onInputChange(event) {
 		kbarStore.setSearch(event.target.value);
 	}
 
+	/**
+	 * Respond to keydown events while the search input is focused
+	 *
+	 * @param event - the keyboard event triggered
+	 */
 	function onInputKeydown(event: KeyboardEvent) {
 		if (currentRootActionId && !search && event.key === 'Backspace') {
 			const parent = actions[currentRootActionId].parent;

@@ -25,6 +25,9 @@
 	let justEntered = false;
 	let matches = [];
 
+	/**
+	 * Focus the first visible action in the list
+	 */
 	export function focus() {
 		if (matches.length && resultBindings.length) {
 			justEntered = true;
@@ -33,6 +36,9 @@
 		}
 	}
 
+	/**
+	 * Focus the last visible action in the list
+	 */
 	export function focusEnd() {
 		if (matches.length && resultBindings.length) {
 			justEntered = true;
@@ -41,6 +47,9 @@
 		}
 	}
 
+	/**
+	 * Select/perform the first visible action in the list
+	 */
 	export function selectFirst() {
 		activeIndex = 0;
 		select();

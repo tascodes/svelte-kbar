@@ -18,6 +18,8 @@ module.exports = {
 		node: true
 	},
 	rules: {
+		'lines-between-class-members': 'error',
+		'@typescript-eslint/no-inferrable-types': 'warn',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/ban-ts-comment': 'off',
 		'@typescript-eslint/no-explicit-any': 'off'

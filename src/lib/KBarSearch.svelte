@@ -84,10 +84,20 @@
 </script>
 
 <input
-	class={customClass || ''}
+	class={customClass || 'kbar__search-default'}
 	bind:this={searchInput}
 	on:input={onInputChange}
 	on:keydown={onInputKeydown}
 	value={search}
 	{placeholder}
 />
+
+<style>
+	.kbar__search-default {
+		border: none;
+		padding-left: 16px;
+		height: 56px;
+		width: 512px;
+		font-size: 16px;
+	}
+</style>

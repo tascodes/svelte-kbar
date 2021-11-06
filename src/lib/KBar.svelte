@@ -178,7 +178,7 @@
 		<div class="kbar__position-container" style={positionContainerStyles}>
 			<div
 				role="dialog"
-				class={dialogClass || ''}
+				class={dialogClass || 'kbar__dialog-default'}
 				bind:this={kbarBinding}
 				in:transitionIn={transitionInParams}
 				out:transitionOut={transitionOutParams}
@@ -213,5 +213,10 @@
 		width: 100%;
 		inset: 0px;
 		padding: 14vh 16px 16px;
+	}
+
+	.kbar__dialog-default {
+		box-shadow: 0px 6px 20px rgb(0 0 0 / 20%);
+		border-radius: 8px;
 	}
 </style>

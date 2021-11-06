@@ -26,7 +26,6 @@
 	.result-wrapper {
 		display: flex;
 		align-items: center;
-		background-color: white;
 		padding: 12px 16px;
 	}
 

@@ -50,23 +50,48 @@
 	];
 </script>
 
-<div>
-	<a href="#test">Link to test focus</a>
-	<KBar searchClass="mySearch" dialogClass="myDialog" {actions} />
+<div class="page-container">
+	<h1>svelte-kbar</h1>
+	<p>
+		<a href="https://github.com/dwagio/svelte-kbar" target="_blank" rel="external">svele-kbar</a>
+		is a command-k interface for use in svelte apps based on
+		<a href="https://github.com/timc1/kbar" target="_blank" rel="external">timc1's kbar</a>.
+	</p>
+	<p>Try pressing <kbd>cmd</kbd>+<kbd>k</kbd> to open the kbar interface.</p>
 </div>
 
+<KBar {actions} />
+
 <style>
-	:global(.mySearch) {
-		border: none;
-		padding-left: 16px;
-		height: 56px;
-		width: 512px;
+	@import url('https://rsms.me/inter/inter.css');
+
+	@supports (font-variation-settings: normal) {
+		html {
+			font-family: 'Inter', sans-serif;
+		}
+	}
+
+	* {
+		font-family: 'Inter', Courier, sans-serif;
+	}
+
+	.page-container {
+		max-width: 1024px;
+		margin: auto;
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	p {
 		font-size: 16px;
 	}
 
-	:global(.myDialog) {
-		box-shadow: 1px 2px 2px hsl(0deg 0% 50% / 0.2), 2px 4px 4px hsl(0deg 0% 50% / 0.2),
-			4px 8px 8px hsl(0deg 0% 50% / 0.2), 8px 16px 16px hsl(0deg 0% 50% / 0.2),
-			16px 32px 32px hsl(0deg 0% 50% / 0.2);
+	kbd {
+		font-family: 'Inter', monospace;
+		background: rgba(0 0 0 / 0.1);
+		padding: 4px;
+		border-radius: 4px;
 	}
 </style>

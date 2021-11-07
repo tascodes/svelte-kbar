@@ -7,6 +7,19 @@
 		%svelte.head%
 	</head>
 	<body>
+		<style>
+			@import url('https://rsms.me/inter/inter.css');
+
+			@supports (font-variation-settings: normal) {
+				html {
+					font-family: 'Inter', sans-serif;
+				}
+			}
+
+			* {
+				font-family: 'Inter', Courier, sans-serif;
+			}
+		</style>
 		<div id="svelte">%svelte.body%</div>
 	</body>
 </html>

@@ -58,23 +58,13 @@
 		<a href="https://github.com/timc1/kbar" target="_blank" rel="external">timc1's kbar</a>.
 	</p>
 	<p>Try pressing <kbd>cmd</kbd>+<kbd>k</kbd> to open the kbar interface.</p>
+
+	<a href="/licenses" rel="license">Licenses</a>
 </div>
 
 <KBar {actions} />
 
 <style>
-	@import url('https://rsms.me/inter/inter.css');
-
-	@supports (font-variation-settings: normal) {
-		html {
-			font-family: 'Inter', sans-serif;
-		}
-	}
-
-	* {
-		font-family: 'Inter', Courier, sans-serif;
-	}
-
 	.page-container {
 		max-width: 1024px;
 		margin: auto;

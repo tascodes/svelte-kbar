@@ -62,8 +62,8 @@
 		]
 	},
 	"devDependencies": {
-		"@sveltejs/kit": "next",
 		"@sveltejs/adapter-vercel": "next",
+		"@sveltejs/kit": "next",
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/svelte": "^3.0.3",
 		"@types/jest": "^27.0.2",
@@ -89,5 +89,6 @@
 	"dependencies": {
 		"match-sorter": "^6.3.1",
 		"svelte-portal": "^2.1.2"
-	}
+	},
+	"packageManager": "yarn@3.1.0"
 }

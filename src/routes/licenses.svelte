@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Licenses</title>
+</svelte:head>
+
 <div class="licenses__container">
 	<div class="licenses__back-link">
 		<a href="/">{'<- Back'}</a>

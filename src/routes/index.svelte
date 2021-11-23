@@ -5,19 +5,29 @@
 
 	const actions: Action[] = [
 		{
+			id: 'home',
+			name: 'Home',
+			shortcut: ['h'],
+			keywords: 'home index main back',
+			subtitle: 'Go to the home page',
+			section: 'Navigation',
+			perform: () => (window.location.pathname = '')
+		},
+		{
 			id: 'blog',
 			name: 'Blog',
 			shortcut: ['b'],
 			keywords: 'writing words',
 			icon: <any>MailIcon,
 			subtitle: 'Go to the blog!',
+			section: 'Navigation',
 			perform: () => (window.location.pathname = 'blog')
 		},
 		{
 			id: 'contact',
 			name: 'Contact',
 			shortcut: ['c'],
-			keywords: 'email',
+			keywords: 'email phone',
 			perform: () => (window.location.pathname = 'contact')
 		},
 		{
@@ -25,6 +35,7 @@
 			name: 'Set Theme',
 			shortcut: ['t'],
 			keywords: 'dark light mode',
+			section: 'Preferences',
 			children: ['dark', 'light']
 		},
 		{

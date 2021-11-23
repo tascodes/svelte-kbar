@@ -50,6 +50,10 @@
 	];
 </script>
 
+<svelte:head>
+	<title>svelte-kbar</title>
+</svelte:head>
+
 <div class="page-container">
 	<h1>svelte-kbar</h1>
 	<p>
